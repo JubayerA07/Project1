@@ -1,5 +1,8 @@
 import java.util.Scanner;
 import java.util.*;
+
+import static java.lang.Math.floor;
+
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -19,21 +22,52 @@ public class Main {
         //Calculating Tip
 
         double preTip = preTotal * Percent/100;
-        double rounding = Math.round(preTip * 100.0) / 100.0;
-        String Tip = ("" + rounding) + "0";
-        double TotalTip = Double.parseDouble(Tip);
+        double rounding =  Math.round(preTip * 100.0) / 100.0;
+        double Tip = 0.01 * floor(rounding * 100.0);
 
         //Calculating Total Bill
-        double TipAndBill = preTotal + TotalTip;
+        double TipAndBill = preTotal + Tip;
         double roundingTotal = Math.round(TipAndBill * 100.0) / 100.0;
         String TotalBill = ("" + roundingTotal) + "0";
-        double totalTip = Double.parseDouble(TotalBill);
+        double totalt = Double.parseDouble(TotalBill);
+
+        //Calculating Tip/Person
+        double TipPer = Tip / people;
+        double roundingTipPer = Math.round(TipPer * 100.0) / 100.0;
+        String TotalTipPer = ("" + roundingTipPer) + "0";
+        double totalTipPer = Double.parseDouble(TotalTipPer);
+
+        //Calculating total per person
+        double BillPer = totalt / people;
+        double roundingBillPer = Math.round(BillPer * 100.0) / 100.0;
+        String TotalBillPer = ("" + roundingBillPer) + "0";
+        double totalBillPer = Double.parseDouble(TotalBillPer);
 
 
 
-        System.out.printf("%.2f", TotalTip);
+
+        System.out.println(rounding);
         System.out.println();
-        System.out.printf("%.2f", totalTip);
+        System.out.println();
+        System.out.println("--------------------------------");
+        System.out.println("|Total Tip Amount: " + "$");
+        System.out.printf("%.2f", Tip);
+        System.out.print("          |");
+        System.out.println("--------------------------------");
+        System.out.println("|Total bill cost: " + "$");
+        System.out.printf("%.2f", totalt);
+        System.out.print("          |");
+        System.out.println("--------------------------------");
+        System.out.println("|Tip per person: " + "$");
+        System.out.printf("%.2f", totalTipPer);
+        System.out.print("          |");
+        System.out.println("--------------------------------");
+        System.out.println("|Total bill per person: " + "$");
+        System.out.printf("%.2f", totalBillPer);
+        System.out.print("          |");
+        System.out.println("--------------------------------");
+
+
 
 
 
